@@ -1,7 +1,7 @@
 :root {
     --font-size: 20px;
     --color: #00985A;
-    --gutter: calc(var(--font-size)*0.5);
+    --gutter: calc(var(--font-size)*2);
 }
 
 @media (min-width: 600px) {
@@ -25,13 +25,15 @@ body {
     height: 100vh; 
 }
 
+header{
+    height: 100vh;
+    margin-top:-40px;
+}
+
 .content_grid{
     display: grid;
     grid-template-columns: 1fr 1.5fr;
-    align-items: top;
-    margin-left:5%;
-    margin-right:5%;
-    margin-top:5%;
+    align-items: center;
     gap:40px;
 }
 
@@ -39,24 +41,46 @@ body {
     max-width: 50%;
 }
 
-.title_homepage{
-    position: fixed;
-    margin-top:160px;
-}
 
 .grid_right{
     min-width:50%;
 }
 
-.artwork{
-    align-items: left;
-    margin-bottom:80px;
-    background-color: white;
-    padding:calc(var(--font-size)*1.5);
-    max-width:65%;
+
+h1 {
+    color: rgb(0, 0, 0);
+    font-size: calc(var(--font-size)*2);
+    width:100%;
+    font-weight: 700;
+}
+
+p{
+    font-size: 18px ;
+    margin-top:calc(var(--font-size)*1.5);
+    color: rgb(0, 0, 0);
+    width:100%;
+    line-height: 32PX;
+}
+
+#channel-link{
+ color:white;
+ text-decoration: none;
+}
+
+#content{
+    border:black;
+    border-color: black;
+    border-width:1.5px;
+    border-style:solid;
+    display: grid;
+    align-items: center;
+    gap:40px;
+    padding:20px;
 }
 
 img{
+    width:50%;
+    margin-top:36px;
     display: block;
     aspect-ratio: 1 / 1;
 	object-fit: cover;
@@ -67,7 +91,6 @@ img{
 h1 {
     color: rgb(0, 0, 0);
     font-size: calc(var(--font-size)*3);
-    width:30%;
     font-weight: 700;
 }
 
@@ -76,34 +99,5 @@ h2{
     font-size:30px;
     font-weight:700;
     margin-top:calc(var(--gutter)*0.5);
-    padding-left:10px;
-}
-
-#h2_title{
     padding-left:40px;
 }
-
-h3{
-    color:black;
-    font-size:14px;
-    margin-top:var(--gutter);
-    margin-bottom:var(--gutter);
-    width:30%;
-    font-weight: 100;
-    line-height: 24px;
-    padding-left:10px;
-}
-
-h4{
-    color:black;
-    font-size:18px;
-    margin-bottom:calc(var(--font-size)*1.5);
-}
-
-p{
-    font-size: 14px ;
-    margin-top:calc(var(--font-size)*1.5);
-    color: rgb(0, 0, 0);
-    width:100%;
-}
-
