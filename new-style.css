@@ -1,0 +1,78 @@
+:root {
+    /* colors */
+    --background-color: #003B1F;
+    --heading-color: #00E24F;
+    --main-paragraph: white;
+
+    /* font */
+    --font-size: 16px;
+
+    /* polaroid */
+    --polaroid_padding: 2% 2% 10% 2%;
+    --polaroid_dimension: 500px;
+}
+
+body {
+    background-color: var(--background-color);
+    padding: 5%;
+}
+
+h1 {
+    color: var(--heading-color);
+    font-size: calc(var(--font-size) * 4);
+}
+
+p {
+    color: var(--main-paragraph);
+}
+
+/* grid system */
+.content_grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+}
+
+.grid_left{
+    border-width: 2px;
+    border-right: var(--heading-color) 2px solid;
+}
+
+.grid_left > .fixed-text > aside > p {
+    color: var(--heading-color);
+}
+
+.fixed-text {
+    position: fixed;
+    width: 27vw;
+}
+
+/* polaroid imagery */
+.polaroid {
+    /* padding: 5% 5% 15% 5%; */
+    padding: var(--polaroid_padding);
+    background-color: white;
+    align-content: center;
+    align-items: center;
+    height:80vh;
+    width:60vh;
+
+    margin-bottom: 20rem;
+}
+
+.polaroid img {
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    height: 100%;
+
+    /* object-fit: cover; */
+}
+
+.polaroid video {
+    width: 500px;
+    height: 500px;
+
+    object-fit: cover;
+}
+
+

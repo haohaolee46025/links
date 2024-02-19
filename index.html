@@ -3,38 +3,41 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link href="assets/reset.css" rel="stylesheet">
-		<link href="style.css" rel="stylesheet">
+		<link href="reset.css" rel="stylesheet">
+		<link href="new-style.css" rel="stylesheet">
+		<!-- <link href="style.css" rel="stylesheet"> -->
 		<script defer src="assets/arena.js"></script>
 	</head>
 
 	<body>
-
-        <header>
+        <main>
             <div class="content_grid">
+
                 <div class="grid_left">
-                    <h1 id="channel-title"></h1>
-                    <p><a id="channel-link">See on Are.na ↗</a></p>
+					<div class="fixed-text">
+						<h1 id="channel-title"></h1>
+						<aside id="channel-description"></aside>
+						<p><a id="channel-link">See on Are.na ↗</a></p>
+					</div>
                 </div>
         
-                <div class="grid_right">
-                    <section id="channel-description"></section>
-                    <img src="assets/Ireland_Map.png" alt="map." >
-                </div>
+                <div class="grid_right"> 
+  
+
+					<section class="container">
+						<h2>Collection</h2>
+						<ul class="blocks" id="channel-blocks"></ul>
+						<p><span id="channel-count"></span> blocks</p>
+					</section>
+				</div>
+
             </div>
-        </header>
+        </main>
 
-		<main>
-			<section class="container">
-				<h2>Collection</h2>
-				<ul class="blocks" id="channel-blocks"></ul>
-				<p><span id="channel-count"></span> blocks</p>
-			</section>
-		</main>
 
-		<footer>
+		<!-- <footer>
 			<h2>Hao Lee</h2>
 			<section id="channel-users"></section>
-		</footer>
+		</footer> -->
 	</body>
 </html>

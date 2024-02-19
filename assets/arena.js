@@ -12,8 +12,8 @@ let channelSlug = 'green-an-ode-to-home' // The “slug” is just the end of th
 
 
 // First, let’s lay out some *functions*, starting with our basic metadata:
-let placeChannelInfo = (data) => {
-	// Target some elements in your HTML:
+let placeChannelInfo = (data) => { 
+	// Target some elements in your HTML:  
 	let channelTitle = document.getElementById('channel-title')
 	let channelDescription = document.getElementById('channel-description')
 	let channelCount = document.getElementById('channel-count')
@@ -37,16 +37,17 @@ let renderBlock = (block) => {
 	if (block.class == 'Link') {
 		let linkItem =
 			`
-			<li>
+			<li class="block block--link polaroid">
 				<p><em>Link</em></p>
 				<picture>
 					<source media="(max-width: 428px)" srcset="${ block.image.thumb.url }">
 					<source media="(max-width: 640px)" srcset="${ block.image.large.url }">
 					<img src="${ block.image.original.url }">
+					<p>${block.description}</p>
 				</picture>
-				<h3>${ block.title }</h3>
-				${ block.description_html }
-				<p><a href="${ block.source.url }">See the original ↗</a></p>
+				// <h3>${ block.title }</h3>
+				// <p class="date">${block.creatd_at}</p>
+				// <p><a href="${ block.source.url }">See the original ↗</a></p>
 			</li>
 			`
 		channelBlocks.insertAdjacentHTML('beforeend', linkItem)
@@ -56,30 +57,34 @@ let renderBlock = (block) => {
 	else if (block.class == 'Image') {
 		let imageItem =
 			`
-				<li>
+				<li class="polaroid">
 					<figure>
 					<img src="${block.image.large.url}" alt="${block.title} by ${block.user.full-name}">
 					<figcaption>${block.title}</figcaption>
+					<p>${block.description}</p>
 					</figure>
 				</li>
 			`
 		channelBlocks.insertAdjacentHTML('beforeend', imageItem)
 	}
 
+
 	// Text!
 	else if (block.class == 'Text') {
 		console.log(block)
 		let textItem =
 			`
-				<li>
-					<blockquote>
-						${block.content_html}
-					</blockquote>
-				</li>
+				<li class="block block--text polaroid">
+					${block.content_html}
+					<div class="title">
+						${block.title}
+					</div>
+				</li>  
 			`
 		channelBlocks.insertAdjacentHTML('beforeend', textItem)
 	}
 
+	
 	// Uploaded (not linked) media…
 	else if (block.class == 'Attachment') {
 		let attachment = block.attachment.content_type // Save us some repetition
@@ -89,7 +94,7 @@ let renderBlock = (block) => {
 			// …still up to you, but we’ll give you the `video` element:
 			let videoItem =
 				`
-				<li>
+				<li class="polaroid">
 					<p><em>Video</em></p>
 					<video controls src="${ block.attachment.url }"></video>
 				</li>
@@ -103,13 +108,17 @@ let renderBlock = (block) => {
 		// else if (attachment.includes('pdf')) {
 		// 	let pdfItem =
 		// 		`
-		// 			<li>
-		// 				<a href="${block.attatchement.url}">
-		// 					<figure>
+		// 		<li class='block block--pdf">
+		// 			<a href="${block.attatchement.url}">
+		// 				<figure>
 		// 					<img src="${block.image.large.url}" alt="${block.title}">
-		// 					<figcaption>${block.title}</figcaption>
-		// 					</figure>
-		// 			</li>
+		// 					<figcaption>
+		//						${block.title}
+		//						<div class"description">
+		//						</div>
+		//					</figcaption>
+		// 				</figure>
+		// 		</li>
 		// 		`
 		// 	channelBlocks.insertAdjacentHTML('beforeend', pdfItem)
 		// }
@@ -138,7 +147,7 @@ let renderBlock = (block) => {
 			// …still up to you, but here’s an example `iframe` element:
 			let linkedVideoItem =
 				`
-				<li>
+				<li class="polaroid">
 					<p><em>Linked Video</em></p>
 					${ block.embed.html }
 				</li>
