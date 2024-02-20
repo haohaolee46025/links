@@ -37,17 +37,14 @@ let renderBlock = (block) => {
 	if (block.class == 'Link') {
 		let linkItem =
 			`
-			<li class="block block--link polaroid">
-				<p><em>Link</em></p>
-				<picture>
-					<source media="(max-width: 428px)" srcset="${ block.image.thumb.url }">
-					<source media="(max-width: 640px)" srcset="${ block.image.large.url }">
+			<li class="polaroid-grid">
+				<picture class="polaroid">
 					<img src="${ block.image.original.url }">
-					<p>${block.description}</p>
 				</picture>
-				// <h3>${ block.title }</h3>
-				// <p class="date">${block.creatd_at}</p>
-				// <p><a href="${ block.source.url }">See the original ↗</a></p>
+				<div>
+					<h3>${ block.title }</h3>
+					<p>${block.description}</p>
+				</div>
 			</li>
 			`
 		channelBlocks.insertAdjacentHTML('beforeend', linkItem)
@@ -57,13 +54,15 @@ let renderBlock = (block) => {
 	else if (block.class == 'Image') {
 		let imageItem =
 			`
-				<li class="polaroid">
-					<figure>
-					<img src="${block.image.large.url}" alt="${block.title} by ${block.user.full-name}">
-					<figcaption>${block.title}</figcaption>
+			<li class="polaroid-grid">
+				<picture class="polaroid">
+					<img src="${ block.image.original.url }">
+				</picture>
+				<div>
+					<h3>${ block.title }</h3>
 					<p>${block.description}</p>
-					</figure>
-				</li>
+				</div>
+			</li>
 			`
 		channelBlocks.insertAdjacentHTML('beforeend', imageItem)
 	}
@@ -74,12 +73,15 @@ let renderBlock = (block) => {
 		console.log(block)
 		let textItem =
 			`
-				<li class="block block--text polaroid">
-					${block.content_html}
-					<div class="title">
-						${block.title}
-					</div>
-				</li>  
+			<li class="polaroid-grid">
+				<picture class="polaroid">
+					<img src="${ block.image.original.url }">
+				</picture>
+				<div>
+					<h3>${ block.title }</h3>
+					<p>${block.description}</p>
+				</div>
+			</li> 
 			`
 		channelBlocks.insertAdjacentHTML('beforeend', textItem)
 	}
@@ -94,10 +96,15 @@ let renderBlock = (block) => {
 			// …still up to you, but we’ll give you the `video` element:
 			let videoItem =
 				`
-				<li class="polaroid">
-					<p><em>Video</em></p>
-					<video controls src="${ block.attachment.url }"></video>
-				</li>
+			<li class="polaroid-grid">
+				<picture class="polaroid">
+					<img src="${ block.image.original.url }">
+				</picture>
+				<div>
+					<h3>${ block.title }</h3>
+					<p>${block.description}</p>
+				</div>
+			</li>
 				`
 			channelBlocks.insertAdjacentHTML('beforeend', videoItem)
 			// More on video, like the `autoplay` attribute:
@@ -105,32 +112,33 @@ let renderBlock = (block) => {
 		}
 
 		// // Uploaded PDFs!
-		// else if (attachment.includes('pdf')) {
-		// 	let pdfItem =
-		// 		`
-		// 		<li class='block block--pdf">
-		// 			<a href="${block.attatchement.url}">
-		// 				<figure>
-		// 					<img src="${block.image.large.url}" alt="${block.title}">
-		// 					<figcaption>
-		//						${block.title}
-		//						<div class"description">
-		//						</div>
-		//					</figcaption>
-		// 				</figure>
-		// 		</li>
-		// 		`
-		// 	channelBlocks.insertAdjacentHTML('beforeend', pdfItem)
-		// }
+	else if (attachment.includes('pdf')) {
+		let pdfItem =
+		`
+		<li class="polaroid-grid">
+			<picture class="polaroid">
+				<img src="${ block.image.original.url }">
+			</picture>
+			<div>
+				<h3>${ block.title }</h3>
+				<p>${block.description}</p>
+			</div>
+		</li>
+			`
+		channelBlocks.insertAdjacentHTML('beforeend', pdfItem)
+		 }
 
 		// Uploaded audio!
 		else if (attachment.includes('audio')) {
 			// …still up to you, but here’s an `audio` element:
 			let audioItem =
 				`
-				<li>
-					<p><em>Audio</em></p>
-					<audio controls src="${ block.attachment.url }"></video>
+				<li class="polaroid">
+					${block.embed.html}
+					// <div>
+					// 	<h3>${ block.title }</h3>
+					// 	<p>${block.description}</p>
+					// </div>
 				</li>
 				`
 			channelBlocks.insertAdjacentHTML('beforeend', audioItem)
@@ -147,10 +155,15 @@ let renderBlock = (block) => {
 			// …still up to you, but here’s an example `iframe` element:
 			let linkedVideoItem =
 				`
-				<li class="polaroid">
-					<p><em>Linked Video</em></p>
-					${ block.embed.html }
-				</li>
+			<li class="polaroid-grid">
+				<picture class="polaroid">
+					<img src="${ block.image.original.url }">
+				</picture>
+				<div>
+					<h3>${ block.title }</h3>
+					<p>${block.description}</p>
+				</div>
+			</li>
 				`
 			channelBlocks.insertAdjacentHTML('beforeend', linkedVideoItem)
 			// More on iframe: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
@@ -159,6 +172,11 @@ let renderBlock = (block) => {
 		// Linked audio!
 		else if (embed.includes('rich')) {
 			// …up to you!
+			`
+			<li class="polaroid-grid">
+				${block.embed.html}
+			
+			`
 		}
 	}
 }

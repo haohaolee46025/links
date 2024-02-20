@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Inter:wght@100..900&family=Share:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 :root {
     /* colors */
     --background-color: #003B1F;
@@ -6,27 +7,49 @@
 
     /* font */
     --font-size: 16px;
+    --font-family: "inter", sans-serif;
+    --font-family2: "Hind Siliguri", serif;
+    --line-hegight:24px;
+
 
     /* polaroid */
     --polaroid_padding: 2% 2% 10% 2%;
     --polaroid_dimension: 500px;
 }
 
+
+
+/* navigation bar */
+
+
+#channel-link {
+    font-size: calc(var(--font-size) * 2);
+    text-decoration: none;
+    font-family: var(--font-family);
+    color:var(--heading-color);
+
+}
+
+nav{
+    width:100vw;
+    border-bottom: var(--heading-color) 1px solid;
+    padding:calc(var(--font-size) * 1.5);
+    position:fixed;
+    background-color:var(--background-color)
+
+}
+
+
+/* mainpart structure & grid stucture */
+
 body {
     background-color: var(--background-color);
-    padding: 5%;
 }
 
-h1 {
-    color: var(--heading-color);
-    font-size: calc(var(--font-size) * 4);
+main{
+    padding: 4%;
 }
 
-p {
-    color: var(--main-paragraph);
-}
-
-/* grid system */
 .content_grid {
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -34,9 +57,10 @@ p {
 }
 
 .grid_left{
-    border-width: 2px;
-    border-right: var(--heading-color) 2px solid;
+    border-right: var(--heading-color) 1px solid;
+    margin-top:-100px;
 }
+
 
 .grid_left > .fixed-text > aside > p {
     color: var(--heading-color);
@@ -44,8 +68,37 @@ p {
 
 .fixed-text {
     position: fixed;
-    width: 27vw;
+    width: 24vw;
+    padding-left:calc(var(--font-size) * 1.2);
 }
+
+.grid_right{
+    padding:calc(var(--font-size) * 3);
+}
+
+/* font style */
+
+h1 {
+    color: var(--heading-color);
+    font-size: calc(var(--font-size) * 5);
+    font-family: var(--font-family);
+    font-weight: 800;
+    margin-bottom: calc(var(--font-size) * 2);
+    line-height: calc(var( --line-hegight) * 4.5);
+    margin-top:calc(var(--font-size) * 16);
+}
+
+p {
+    color: var(--main-paragraph);
+    font-size: calc(var(--font-size) * 1.6);
+    font-family: var(--font-family2);
+    font-weight: 200;
+}
+
+
+
+
+
 
 /* polaroid imagery */
 .polaroid {
@@ -56,23 +109,38 @@ p {
     align-items: center;
     height:80vh;
     width:60vh;
-
     margin-bottom: 20rem;
 }
+
+.polaroid-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    row-gap: 2rem;
+
+    color: white;
+}
+
 
 .polaroid img {
     aspect-ratio: 1 / 1;
     width: 100%;
     height: 100%;
 
-    /* object-fit: cover; */
+    object-fit: cover;
 }
 
 .polaroid video {
     width: 500px;
     height: 500px;
-
+    aspect-ratio: 1 / 1;
     object-fit: cover;
 }
 
+li{
+    text-decoration: none;
+}
+
+li::marker {
+    display: none;
+}
 
