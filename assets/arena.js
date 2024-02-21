@@ -124,13 +124,14 @@ let renderBlock = (block) => {
 		`
 		<li class="polaroid-grid">
 
-			<figure class="polaroid">
+			<figure class="polaroid" id="pdf_content">
 				<img src=${block.image.large.url}></img>
 			</figure>
 
 			<div class="polaroidtext">
 				<h3>${ block.title }</h3>
 				<a href= ${block.attachment.url}></a>
+				<p><a href="${ block.source.url }" target="blank">See the original ↗</a></p>
 			</div>
 
 		</li>
@@ -244,3 +245,52 @@ fetch(`https://api.are.na/v2/channels/${channelSlug}?per=100`, { cache: 'no-stor
 		data.collaborators.forEach((collaborator) => renderUser(collaborator, channelUsers))
 		renderUser(data.user, channelUsers)
 	})
+
+// animation
+
+window.addEventListener('scroll', function() {
+    // 处理图片
+    let images = document.querySelectorAll('.polaroid img');
+    images.forEach((image) => {
+        let distanceFromTop = image.getBoundingClientRect().top;
+        let windowHeight = window.innerHeight;
+        let viewportMiddle = windowHeight / 2;
+
+        if (distanceFromTop < viewportMiddle && distanceFromTop > -windowHeight / 2) {
+            let opacity = 1 - Math.abs(distanceFromTop - viewportMiddle) / windowHeight;
+            image.style.opacity = opacity;
+        }
+    });
+
+    // 处理视频
+    let videos = document.querySelectorAll('#video_content');
+    videos.forEach((video) => {
+        let distanceFromTop = video.getBoundingClientRect().top;
+        let windowHeight = window.innerHeight;
+        let viewportMiddle = windowHeight / 2;
+
+        if (distanceFromTop < viewportMiddle && distanceFromTop > -windowHeight / 2) {
+            let moveRight = 4; // 两个rem
+            video.style.transform = `translateX(${moveRight}rem)`;
+        } else {
+            video.style.transform = 'none';
+        }
+    });
+});
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+
+		let button = document.querySelector('button');
+		
+		button.addEventListener('click', function() {
+			window.scrollTo({
+				top: 0,
+				behavior: 'smooth'
+			});
+		});
+	});
+
+
