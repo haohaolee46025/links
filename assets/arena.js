@@ -38,13 +38,16 @@ let renderBlock = (block) => {
 		let linkItem =
 			`
 			<li class="polaroid-grid">
-				<picture class="polaroid">
-					<img src="${ block.image.original.url }">
-				</picture>
-				<div>
+
+				<figure class="polaroid">
+					<img src="${ block.image.large.url }">
+				</figure>
+
+				<div class="polaroidtext">
+					
 					<h3>${ block.title }</h3>
-					<p>${block.description}</p>
 				</div>
+
 			</li>
 			`
 		channelBlocks.insertAdjacentHTML('beforeend', linkItem)
@@ -55,13 +58,16 @@ let renderBlock = (block) => {
 		let imageItem =
 			`
 			<li class="polaroid-grid">
-				<picture class="polaroid">
-					<img src="${ block.image.original.url }">
-				</picture>
-				<div>
+
+				<figure class="polaroid">
+					<img src="${block.image.large.url }">
+				</figure>
+
+				<div class="polaroidtext">
+					<p>${ block.description}</p>
 					<h3>${ block.title }</h3>
-					<p>${block.description}</p>
 				</div>
+
 			</li>
 			`
 		channelBlocks.insertAdjacentHTML('beforeend', imageItem)
@@ -70,20 +76,18 @@ let renderBlock = (block) => {
 
 	// Text!
 	else if (block.class == 'Text') {
-		console.log(block)
+
+		console.log(block);
 		let textItem =
 			`
-			<li class="polaroid-grid">
-				<picture class="polaroid">
-					<img src="${ block.image.original.url }">
-				</picture>
-				<div>
-					<h3>${ block.title }</h3>
-					<p>${block.description}</p>
-				</div>
-			</li> 
+		<li class="polaroid-grid">
+
+			<figure class="polaroid" id="text_content">
+				<src="${ block.content_html }</src>
+			</figure>
+		</li>
 			`
-		channelBlocks.insertAdjacentHTML('beforeend', textItem)
+		channelBlocks.insertAdjacentHTML('beforeend', textItem);
 	}
 
 	
@@ -95,15 +99,18 @@ let renderBlock = (block) => {
 		if (attachment.includes('video')) {
 			// …still up to you, but we’ll give you the `video` element:
 			let videoItem =
-				`
+			`
 			<li class="polaroid-grid">
-				<picture class="polaroid">
-					<img src="${ block.image.original.url }">
-				</picture>
-				<div>
-					<h3>${ block.title }</h3>
-					<p>${block.description}</p>
-				</div>
+
+			<figure class="polaroid" id="video_content">
+				 <div class=video>${block.embed.html}</div>
+			</figure>
+
+			<div class="polaroidtext">
+				<p>${ block.description}</p>
+				<h3>${ block.title }</h3>
+			</div>
+
 			</li>
 				`
 			channelBlocks.insertAdjacentHTML('beforeend', videoItem)
@@ -116,13 +123,16 @@ let renderBlock = (block) => {
 		let pdfItem =
 		`
 		<li class="polaroid-grid">
-			<picture class="polaroid">
-				<img src="${ block.image.original.url }">
-			</picture>
-			<div>
+
+			<figure class="polaroid">
+				<img src=${block.image.large.url}></img>
+			</figure>
+
+			<div class="polaroidtext">
 				<h3>${ block.title }</h3>
-				<p>${block.description}</p>
+				<a href= ${block.attachment.url}></a>
 			</div>
+
 		</li>
 			`
 		channelBlocks.insertAdjacentHTML('beforeend', pdfItem)
@@ -133,12 +143,17 @@ let renderBlock = (block) => {
 			// …still up to you, but here’s an `audio` element:
 			let audioItem =
 				`
-				<li class="polaroid">
-					${block.embed.html}
-					// <div>
-					// 	<h3>${ block.title }</h3>
-					// 	<p>${block.description}</p>
-					// </div>
+				<li class="polaroid-grid" >
+
+					<figure class="polaroid" id="audio_content">
+						<audio controls src="${ block.attachment.url }"></audio>
+					</figure>
+
+					<div class="polaroidtext">
+						<p>${ block.description}</p>
+						<h3>${ block.title }</h3>
+					</div>
+
 				</li>
 				`
 			channelBlocks.insertAdjacentHTML('beforeend', audioItem)
@@ -154,15 +169,19 @@ let renderBlock = (block) => {
 		if (embed.includes('video')) {
 			// …still up to you, but here’s an example `iframe` element:
 			let linkedVideoItem =
+
 				`
-			<li class="polaroid-grid">
-				<picture class="polaroid">
-					<img src="${ block.image.original.url }">
-				</picture>
-				<div>
+				<li class="polaroid-grid">
+
+				<figure class="polaroid" id="video_content">
+			 		<div class=video>${block.embed.html}</div>
+				</figure>
+
+				<div class="polaroidtext">
+					<p>${ block.description}</p>
 					<h3>${ block.title }</h3>
-					<p>${block.description}</p>
 				</div>
+
 			</li>
 				`
 			channelBlocks.insertAdjacentHTML('beforeend', linkedVideoItem)
@@ -173,9 +192,18 @@ let renderBlock = (block) => {
 		else if (embed.includes('rich')) {
 			// …up to you!
 			`
-			<li class="polaroid-grid">
-				${block.embed.html}
-			
+				<li class="polaroid-grid">
+
+					<figure class="polaroid" id="audio_content">
+						<audio controls src="${ block.attachment.url }"></audio>
+					</figure>
+
+					<div class="polaroidtext">
+						<p>${ block.description}</p>
+						<h3>${ block.title }</h3>
+					</div>
+
+				</li>
 			`
 		}
 	}
