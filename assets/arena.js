@@ -35,6 +35,7 @@ let renderBlock = (block) => {
 
 	// Links!
 	if (block.class == 'Link') {
+
 		let linkItem =
 			`
 			<li class="polaroid-grid">
@@ -44,8 +45,9 @@ let renderBlock = (block) => {
 				</figure>
 
 				<div class="polaroidtext">
-					
+					<p>${ block.description_html}</p>
 					<h3>${ block.title }</h3>
+					<p><a href="${ block.source.url }" target="blank">See the original ↗</a></p>
 				</div>
 
 			</li>
@@ -55,6 +57,7 @@ let renderBlock = (block) => {
 
 	// Images!
 	else if (block.class == 'Image') {
+		console.log(block.title)
 		let imageItem =
 			`
 			<li class="polaroid-grid">
@@ -64,7 +67,7 @@ let renderBlock = (block) => {
 				</figure>
 
 				<div class="polaroidtext">
-					<p>${ block.description}</p>
+					<p>${ block.description_html}</p>
 					<h3>${ block.title }</h3>
 				</div>
 
@@ -77,7 +80,7 @@ let renderBlock = (block) => {
 	// Text!
 	else if (block.class == 'Text') {
 
-		console.log(block);
+		// console.log(block);
 		let textItem =
 			`
 		<li class="polaroid-grid">
@@ -98,6 +101,7 @@ let renderBlock = (block) => {
 		// Uploaded videos!
 		if (attachment.includes('video')) {
 			// …still up to you, but we’ll give you the `video` element:
+			// console.log(block)
 			let videoItem =
 			`
 			<li class="polaroid-grid">
@@ -107,7 +111,7 @@ let renderBlock = (block) => {
 			</figure>
 
 			<div class="polaroidtext">
-				<p>${ block.description}</p>
+				<p>${ block.description_html}</p>
 				<h3>${ block.title }</h3>
 			</div>
 
@@ -129,8 +133,8 @@ let renderBlock = (block) => {
 			</figure>
 
 			<div class="polaroidtext">
+				<p>${ block.description_html}</p>
 				<h3>${ block.title }</h3>
-				<a href= ${block.attachment.url}></a>
 				<p><a href="${ block.source.url }" target="blank">See the original ↗</a></p>
 			</div>
 
@@ -151,7 +155,7 @@ let renderBlock = (block) => {
 					</figure>
 
 					<div class="polaroidtext">
-						<p>${ block.description}</p>
+						<p>${ block.description_html}</p>
 						<h3>${ block.title }</h3>
 					</div>
 
@@ -169,7 +173,9 @@ let renderBlock = (block) => {
 		// Linked video!
 		if (embed.includes('video')) {
 			// …still up to you, but here’s an example `iframe` element:
+		
 			let linkedVideoItem =
+			// console.log('this one=', block)
 
 				`
 				<li class="polaroid-grid">
@@ -179,7 +185,7 @@ let renderBlock = (block) => {
 				</figure>
 
 				<div class="polaroidtext">
-					<p>${ block.description}</p>
+					<p>${ block.description_html}</p>
 					<h3>${ block.title }</h3>
 				</div>
 
@@ -200,7 +206,7 @@ let renderBlock = (block) => {
 					</figure>
 
 					<div class="polaroidtext">
-						<p>${ block.description}</p>
+						<p>${ block.description_html}</p>
 						<h3>${ block.title }</h3>
 					</div>
 
@@ -231,7 +237,7 @@ let renderUser = (user, container) => { // You can have multiple arguments for a
 fetch(`https://api.are.na/v2/channels/${channelSlug}?per=100`, { cache: 'no-store' })
 	.then((response) => response.json()) // Return it as JSON data
 	.then((data) => { // Do stuff with the data
-		console.log(data) // Always good to check your response!
+		// console.log(data) // Always good to check your response!
 		placeChannelInfo(data) // Pass the data to the first function
 
 		// Loop through the `contents` array (list), backwards. Are.na returns them in reverse!
@@ -241,15 +247,15 @@ fetch(`https://api.are.na/v2/channels/${channelSlug}?per=100`, { cache: 'no-stor
 		})
 
 		// Also display the owner and collaborators:
-		let channelUsers = document.getElementById('channel-users') // Show them together
-		data.collaborators.forEach((collaborator) => renderUser(collaborator, channelUsers))
-		renderUser(data.user, channelUsers)
+		// let channelUsers = document.getElementById('channel-users') // Show them together
+		// data.collaborators.forEach((collaborator) => renderUser(collaborator, channelUsers))
+		// renderUser(data.user, channelUsers)
 	})
 
 // animation
 
 window.addEventListener('scroll', function() {
-    // 处理图片
+
     let images = document.querySelectorAll('.polaroid img');
     images.forEach((image) => {
         let distanceFromTop = image.getBoundingClientRect().top;
@@ -262,7 +268,7 @@ window.addEventListener('scroll', function() {
         }
     });
 
-    // 处理视频
+
     let videos = document.querySelectorAll('#video_content');
     videos.forEach((video) => {
         let distanceFromTop = video.getBoundingClientRect().top;
@@ -270,27 +276,24 @@ window.addEventListener('scroll', function() {
         let viewportMiddle = windowHeight / 2;
 
         if (distanceFromTop < viewportMiddle && distanceFromTop > -windowHeight / 2) {
-            let moveRight = 4; // 两个rem
+            let moveRight = 3; 
+            video.style.transition = 'transform 2s ease'; 
             video.style.transform = `translateX(${moveRight}rem)`;
         } else {
+            video.style.transition = 'none'; 
             video.style.transform = 'none';
         }
     });
 });
 
 
-
-
 document.addEventListener('DOMContentLoaded', function() {
 
-		let button = document.querySelector('button');
-		
-		button.addEventListener('click', function() {
-			window.scrollTo({
-				top: 0,
-				behavior: 'smooth'
-			});
-		});
-	});
-
-
+    let button = document.querySelector('button');
+    button.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+});

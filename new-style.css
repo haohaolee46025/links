@@ -40,7 +40,39 @@ nav{
     width:100vw;
     padding-left:calc(var(--font-size) * 2);
     padding-top:calc(var(--font-size) * 1.6);
-    padding-bottom:calc(var(--font-size) * 1.6);
+    padding-bottom:caelse if (block.class == 'Attachment') {
+        let attachment = block.attachment.content_type; // Save us some repetition
+    
+        // Check if attachment is not null or undefined
+        if (attachment) {
+            // Uploaded videos!
+            if (attachment.includes('video')) {
+                // …still up to you, but we’ll give you the `video` element:
+                let videoItem =
+                    `
+                <li class="polaroid-grid">
+    
+                <figure class="polaroid" id="video_content">
+                     <div class=video>${block.embed.html}</div>
+                </figure>
+    
+                <div class="polaroidtext">
+                    <p>${ block.description}</p>
+                    <h3>${ block.title }</h3>
+                </div>
+    
+                </li>
+                    `;
+                channelBlocks.insertAdjacentHTML('beforeend', videoItem);
+                // More on video, like the `autoplay` attribute:
+                // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video
+            }
+        } else {
+            // 如果 attachment 為 null，則隱藏該元素
+            channelBlocks.style.display = 'none';
+        }
+    }
+    lc(var(--font-size) * 1.6);
     position:fixed;
     background-color:transparent;
     z-index: 9999;
@@ -188,7 +220,7 @@ em{
 .polaroidtext h3 {
     max-width:100%;
     font-family: var(--font-family2);
-    font-size: calc(var(--font-size) * 1.5);
+    font-size: calc(var(--font-size) * 2);
     color:var(--ireland-lightgreen);
     align-items: center;
     font-weight: 600;
@@ -197,7 +229,7 @@ em{
 .polaroidtext p {
     max-width:30vw;
     font-family: var(--font-family2);
-    font-size: var(--font-size);
+    font-size: calc(var(--font-size) * 1.2);
     color:var(--ireland-lightgreen);
     margin-bottom:calc(var(--font-size) * 2);
 
@@ -216,18 +248,16 @@ em{
 }
 
 .polaroid {
-    /* padding: 5% 5% 15% 5%; */
     padding: var(--polaroid_padding);
     background-color: #e2e2e2;
     align-content: center;
     align-items: center;
-    height:57vh;
-    width:36vh;
+    height: 57vh;
+    width: 36vh;
     margin-top: 5rem;
     margin-bottom: 5rem;
-    margin-left:10rem;
-    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
-}
+    margin-left: 10rem;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);}
 
 /* polaroid imagery */
 
@@ -244,7 +274,7 @@ em{
 .polaroidtext {
     padding-left:4rem;
     width:20vw;
-    margin-top: 10rem;
+    margin-top: 5rem;
 }
 
 
@@ -252,12 +282,22 @@ em{
     background-color: transparent;
     box-shadow:none;
     width:80vh;
+    height: 100%;
     font-family: var(--font-family3);
-    font-size: calc(var(--font-size) * 2);
-    line-height: 1.5; /* 设置行高 */
+    font-size: calc(var(--font-size) * 2.5);
+    line-height: 1.5; 
     color:var(--ireland-green);
-
 }
+
+#text_content p {
+    width:80vh;
+    font-family: var(--font-family 1);
+    font-size: calc(var(--font-size) * 1.2);
+    line-height: 1.8; 
+    color:var(--ireland-lightgreen);
+    margin-top:2rem;
+    margin-bottom:2rem;}
+
 
 /* polaroid video */
 
@@ -280,7 +320,7 @@ em{
 /* polaroid audio */
 
 #audio_content{
-    background-color: #858585;
+    background-color: #e2e2e2;
     rotate:3deg;
     margin-left:20rem;}
 
