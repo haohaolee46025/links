@@ -38,16 +38,16 @@ let renderBlock = (block) => {
 
 		let linkItem =
 			`
-			<li class="polaroid-grid">
+			<li class="polaroid-grid" >
 
-				<figure class="polaroid">
+				<figure class="polaroid" id="link_content">
 					<img src="${ block.image.large.url }">
 				</figure>
 
 				<div class="polaroidtext">
 					<p>${ block.description_html}</p>
 					<h3>${ block.title }</h3>
-					<p><a href="${ block.source.url }" target="blank">See the original ↗</a></p>
+					<p class=linktext><a href="${ block.source.url }" target="blank">See the original</a></p>
 				</div>
 
 			</li>
@@ -111,7 +111,6 @@ let renderBlock = (block) => {
 			</figure>
 
 			<div class="polaroidtext">
-				<p>${ block.description_html}</p>
 				<h3>${ block.title }</h3>
 			</div>
 
@@ -133,9 +132,8 @@ let renderBlock = (block) => {
 			</figure>
 
 			<div class="polaroidtext">
-				<p>${ block.description_html}</p>
 				<h3>${ block.title }</h3>
-				<p><a href="${ block.source.url }" target="blank">See the original ↗</a></p>
+				<p class=linktext><a href="${ block.source.url }" target="blank">See the original</a></p>
 			</div>
 
 		</li>
@@ -155,7 +153,6 @@ let renderBlock = (block) => {
 					</figure>
 
 					<div class="polaroidtext">
-						<p>${ block.description_html}</p>
 						<h3>${ block.title }</h3>
 					</div>
 
@@ -185,7 +182,6 @@ let renderBlock = (block) => {
 				</figure>
 
 				<div class="polaroidtext">
-					<p>${ block.description_html}</p>
 					<h3>${ block.title }</h3>
 				</div>
 
@@ -206,7 +202,6 @@ let renderBlock = (block) => {
 					</figure>
 
 					<div class="polaroidtext">
-						<p>${ block.description_html}</p>
 						<h3>${ block.title }</h3>
 					</div>
 
@@ -297,3 +292,21 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+window.addEventListener('scroll', function() {
+    let linkTexts = document.querySelectorAll('.linktext');
+    linkTexts.forEach((linkText) => {
+        let distanceFromTop = linkText.getBoundingClientRect().top;
+        let windowHeight = window.innerHeight;
+        let viewportBottom = windowHeight;
+        
+        if (distanceFromTop < viewportBottom) {
+            // 计算透明度增加的百分比
+            let opacityPercentage = (viewportBottom - distanceFromTop) / windowHeight;
+            // 将透明度从0增加到1
+            let opacity = opacityPercentage > 1 ? 1 : opacityPercentage; // 确保不超过1
+            linkText.style.opacity = opacity;
+        }
+    });
+});
+
