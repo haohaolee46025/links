@@ -436,7 +436,8 @@ button:hover {
 /* font style */
 
 h1 {
-    font-size: calc(var(--font-size) * 4);
+    font-size: calc(var(--font-size) * 3);
+    line-height: calc(var( --line-hegight) * 2.8);
     width:100%;
 }
 
@@ -450,8 +451,8 @@ p {
 }
 
 h2{
-    font-size: calc(var(--font-size) * 2.5);
-    line-height:calc(var(--font-size) * 3.2);
+    font-size: calc(var(--font-size) * 2);
+    line-height:calc(var(--font-size) * 2.8);
 }
 
 h5{
