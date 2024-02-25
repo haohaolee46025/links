@@ -298,15 +298,14 @@ window.addEventListener('scroll', function() {
     linkTexts.forEach((linkText) => {
         let distanceFromTop = linkText.getBoundingClientRect().top;
         let windowHeight = window.innerHeight;
-        let viewportBottom = windowHeight;
-        
+        let viewportBottom = windowHeight / 2; 
         if (distanceFromTop < viewportBottom) {
-            // 计算透明度增加的百分比
-            let opacityPercentage = (viewportBottom - distanceFromTop) / windowHeight;
-            // 将透明度从0增加到1
-            let opacity = opacityPercentage > 1 ? 1 : opacityPercentage; // 确保不超过1
-            linkText.style.opacity = opacity;
+            linkText.style.opacity = 1; 
         }
     });
+
+    
+    window.removeEventListener('scroll', this);
 });
+
 
