@@ -368,7 +368,7 @@ body {
 .grid_left{
     width:100vw;
     height:auto
-    min-height:85vh
+    min-height:85vh;
     align-items: left;
     padding:2rem;
     margin-bottom:-100px;
