@@ -147,7 +147,7 @@ p {
     line-height:calc(var(--font-size) * 2);
     font-family: var(--font-family);
     font-weight: 200;
-    width: 25vw;
+    width: 35vw;
 }
 
 h2{
@@ -199,6 +199,14 @@ em{
     box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
     border-radius: 3px;}
 
+
+.polaroidtext {
+        padding-left:4rem;
+        width:35vw;
+        margin-top: 5rem;
+    }
+    
+
 .polaroidtext h3 {
         max-width:100%;
         font-family: var(--font-family2);
@@ -298,12 +306,6 @@ em{
     width:57vh;}
 
 /* polaroid text */
-.polaroidtext {
-    padding-left:4rem;
-    width:20vw;
-    margin-top: 5rem;
-}
-
 
 #text_content{
     background-color: transparent;
@@ -333,6 +335,15 @@ em{
 
 
 
+
+
+
+
+
+
+
+
+    
 /* smaller screen */
 
 
@@ -367,38 +378,25 @@ body {
 
 .grid_left{
     width:100vw;
-    height:auto
-    min-height:85vh;
+    height:auto;
     align-items: left;
     padding:2rem;
-    margin-bottom:-100px;
 }
 
 .grid_right{
     width:100vw;
     align-items: left;
     padding:2rem;
+    margin-top:-60px;
 }
 
 
 .fixed-text {
     align-items: center;
     position: relative;
-    width:100%;
+    width:80%;
     padding: 0;
     }
-
-
-.grid_right > .container > .homepage > aside > p {
-    font-size: calc(var(--font-size) * 3);
-    line-height:calc(var(--font-size) * 4);
-    font-weight: 100;
-    position: relative; 
-    top: 0%; 
-    left:0%;
-    width:75%;
-    transform: none;
-}
 
 
 
@@ -409,15 +407,13 @@ body {
     margin-left:0rem;
     margin-right:0rem;
     margin-top:4rem;
-    margin-bottom:8rem;
+    margin-bottom:0rem;
 }
 
 #ireland-map{
-    width: 80%;
-    height: auto;
     opacity:0.2;
-    position: relative;
-    margin-top:-600px;}
+    position: absolute;
+    margin-top:-350px;}
     
 
 
@@ -450,7 +446,7 @@ p {
     line-height:calc(var(--font-size) * 2);
     font-family: var(--font-family);
     font-weight: 200;
-    width: 25vw;
+    width: 100vw;
 }
 
 h2{
@@ -461,10 +457,19 @@ h2{
 h5{
     font-size: calc(var(--font-size) * 1.4);
     line-height:calc(var(--font-size) * 2.1);
-    Margin-top:3rem;
+    Margin-bottom:-10rem;
 }
 
-
+.grid_right > .container > .homepage > aside > p {
+    font-size: calc(var(--font-size) * 2);
+    line-height:calc(var(--font-size) * 3);
+    font-weight: 100;
+    position: relative; 
+    top: 0%; 
+    left:0%;
+    width:75%;
+    transform: none;
+}
 
 
 
@@ -476,153 +481,51 @@ h5{
     flex-direction: column;
     grid-template-columns: 1fr 1fr;
     align-items: left;
+    margin-bottom: 10rem;
 }
 
 .polaroid {
-    padding: var(--polaroid_padding);
-    background-color: #e2e2e2;
-    align-content: center;
-    align-items: center;
     height: 68.4vh;
     width: 43.2vh;
-    margin-top: 5rem;
-    margin-bottom: 5rem;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
     margin-left: 0rem;
-    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
     border-radius: 3px;}
 
+
+.polaroidtext {
+        padding-left:0rem;
+        width:100vw;
+        margin-top: 0rem;
+        
+    }
+
 .polaroidtext h3 {
-        max-width:100%;
-        font-family: var(--font-family2);
-        font-size: calc(var(--font-size) * 2);
-        color:var(--ireland-lightgreen);
-        align-items: center;
-        font-weight: 600;
+        width:75vw;
+        margin-left: 0rem;
     }
     
 .polaroidtext p {
-        max-width:30vw;
-        font-family: var(--font-family2);
-        font-size: calc(var(--font-size) * 1.2);
-        color:var(--ireland-lightgreen);
-        margin-bottom:calc(var(--font-size) * 2);
+        max-width:75vw;
+        margin-left: 0rem;
     
     }
 
     
 .linktext {
-        text-align: center;
-        font-family: var(--font-family2);
-        font-size: calc(var(--font-size) * 1.2);
-        color:var(--ireland-green);
-        font-family: 800;
-        padding:1vh;
-        padding-left:1vw;
-        padding-right:1vw;
-        margin-top:2rem;
-        width:10vw;
-        border: solid;
-        border-width:2px ;
-        border-color:var(--ireland-lightgreen) ;
-        border-radius: 50px;
-        opacity: 0; 
-        transition: opacity 0.2s; 
+        width:40vw;
     }
 
-.linktext:hover {
-    background-color:var(--ireland-green) ;
-    color:var(--ireland-darkgreen);
-    border-color:var(--ireland-green) ;
-    }
 
-/* polaroid imagery */
-
-.polaroid img {
-    aspect-ratio: 3.1 / 2.3;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0; 
-    transition: opacity 3s ease; 
-}
-/* polaroid video */
-
-#video_content{
-    height:50vh;
-    width:70vh;
-    align-items: center;
-    margin-left:-8rem;
-
-}
-
-
-
-.polaroid video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* polaroid audio */
-
-#audio_content{
-    background-color: #e2e2e2;
-    rotate:3deg;
-    margin-left:20rem;}
-
-
-.polaroid audio {
-    aspect-ratio: 3.1 / 2.3;
-    width: 100%;
-    height: 100%;
-    background-image: url("assets/listen.jpg"); 
-    background-size: cover; 
-    background-repeat: no-repeat; 
-}
-
-/* polaroid pdf */
-
-#pdf_content{
-    background-color: #e9e9e9;
-    rotate:-3deg;
-    margin-left:8rem;
-    height:57vh;
-    width:57vh;}
 
 /* polaroid text */
-.polaroidtext {
-    padding-left:4rem;
-    width:20vw;
-    margin-top: 5rem;
-}
 
 
 #text_content{
-    background-color: transparent;
-    box-shadow:none;
-    width:80vh;
-    height: 100%;
-    font-family: var(--font-family3);
-    font-size: calc(var(--font-size) * 2.5);
+    width:72vw;
+    height: auto;
+    font-size: calc(var(--font-size) * 2);
     line-height: 1.5; 
-    color:var(--ireland-green);
 }
-
-#text_content p {
-    width:80vh;
-    font-family: var(--font-family 1);
-    font-size: calc(var(--font-size) * 1.2);
-    line-height: 1.8; 
-    color:var(--ireland-lightgreen);
-    margin-top:2rem;
-    margin-bottom:2rem;}
-
-/* polaroid link */
-#link_content{
-    margin-left:7rem;
-    rotate:-10deg;
-    }
-
-
 
  }
