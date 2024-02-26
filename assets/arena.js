@@ -40,7 +40,7 @@ let renderBlock = (block) => {
 			`
 			<li class="polaroid-grid" >
 
-				<figure class="polaroid" id="link_content">
+				<figure class="oldpaper">
 					<img src="${ block.image.large.url }">
 				</figure>
 
@@ -62,7 +62,7 @@ let renderBlock = (block) => {
 			`
 			<li class="polaroid-grid">
 
-				<figure class="polaroid">
+				<figure class="polaroid" >
 					<img src="${block.image.large.url }">
 				</figure>
 
@@ -307,5 +307,14 @@ window.addEventListener('scroll', function() {
     
     window.removeEventListener('scroll', this);
 });
+
+
+window.addEventListener('scroll', function() {
+	let scrollPosition = window.scrollY;
+	let opacityValue = 0.3 - (scrollPosition / 1000); 
+	document.getElementById('ireland-map').style.opacity = opacityValue;
+	document.getElementById('ireland-map').style.filter = `blur(${scrollPosition / 30}px)`; // 滚动越多，模糊越多
+  });
+  
 
 
