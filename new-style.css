@@ -314,19 +314,27 @@ a, button {
 
 /* polaroid text */
 
-#text_content{
-    background-color: transparent;
-    box-shadow:none;
-    width:40vw;
+.text_content{
+    margin-top: 5rem;
+    margin-bottom: 8rem;
+    margin-left: 6vw;
+    width: 40rem;
     height: 100%;
     font-family: var(--font-family3);
-    font-size: calc(var(--font-size) * 2.5);
-    line-height: 1.5; 
+    font-size: calc(var(--font-size) * 1.6);
+    line-height: calc(var(--font-size) * 2.4);
     color:var(--ireland-green);
+    transition: opacity 0.8s, filter 0.8s;
 }
 
-#text_content p {
-    width:40vw;
+
+.blur {
+    filter: blur(100px);
+    opacity:8 ;
+}
+
+.text_content p {
+    width:40rem;
     font-family: var(--font-family 1);
     font-size: calc(var(--font-size) * 1.2);
     line-height: 1.8; 
@@ -544,12 +552,23 @@ h5{
 /* polaroid text */
 
 
-#text_content{
-    width:72vw;
+.text_content{
+    width: 75vw;
+    margin-top: 10rem;
+    margin-bottom: 10rem;
+    margin-left: 0rem;
     height: auto;
     font-size: calc(var(--font-size) * 2);
     line-height: 1.5; 
 }
+
+.text_content p {
+    width:75vw;
+    font-size: calc(var(--font-size) * 1);
+    line-height: 1.5; 
+    margin-top:2rem;
+    margin-bottom:2rem;
+    word-break: break-all;}
 
 /* polaroid video */
 
@@ -557,11 +576,9 @@ h5{
     height:15.6rem;
     width:21.6rem;
     align-items: center;
-    margin-left:0rem;
+    margin-left:-10rem;
 
 }
-
-
 
 .polaroid video {
     width: 100%;
@@ -593,7 +610,7 @@ h5{
 .oldpaper {
     height: 27rem;
     width: 21.6rem;
-    margin-left: 4rem;
+    margin-left: 0rem;
     margin-top: 1rem;
     margin-bottom: 2rem;
     }
@@ -643,7 +660,7 @@ main{
 
 .grid_right{
     width:100vw;
-    align-items: left;
+    align-items: center;
     padding:2rem;
     margin-top:auto;
 }
@@ -715,8 +732,8 @@ h5{
 
 
 .polaroid {
-    height: 25.5rem;
-    width: 16.5rem;
+    height: 109%;
+    width: 100%;
     margin-top: 2rem;
     margin-bottom: 3rem;
     margin-left: 0rem;
@@ -742,6 +759,12 @@ h5{
     }
 
 
+.text_content{
+        width: 100%;
+        font-size: calc(var(--font-size) * 1.6);
+        line-height:calc(var(--font-size) * 2.4); 
+    }    
+
 /* polaroid link */
 #link_content{
     margin-left:4rem;
@@ -750,4 +773,8 @@ h5{
     width: 16.5rem; 
     }
 
+
+
+
+    
 }

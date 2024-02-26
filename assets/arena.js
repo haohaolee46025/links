@@ -83,9 +83,9 @@ let renderBlock = (block) => {
 		// console.log(block);
 		let textItem =
 			`
-		<li class="polaroid-grid">
+		<li class="text_content">
 
-			<figure class="polaroid" id="text_content">
+			<figure>
 				<src="${ block.content_html }</src>
 			</figure>
 		</li>
@@ -315,6 +315,24 @@ window.addEventListener('scroll', function() {
 	document.getElementById('ireland-map').style.opacity = opacityValue;
 	document.getElementById('ireland-map').style.filter = `blur(${scrollPosition / 30}px)`; // 滚动越多，模糊越多
   });
+
+
   
+// 检测滚动事件
+window.addEventListener('scroll', function() {
+    var textContents = document.querySelectorAll('.text_content');
+    
+    // 對於每個元素進行遍歷
+    textContents.forEach(function(textContent) {
+        var rect = textContent.getBoundingClientRect();
 
-
+        // 檢查元素是否在屏幕上半部
+        if (rect.top < window.innerHeight / 6) {
+            // 添加模糊和淡出效果的類
+            textContent.classList.add('blur');
+        } else {
+            // 移除模糊和淡出效果的類
+            textContent.classList.remove('blur');
+        }
+    });
+});
