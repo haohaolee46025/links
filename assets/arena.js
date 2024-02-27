@@ -106,7 +106,7 @@ let renderBlock = (block) => {
 			`
 			<li class="polaroid-grid">
 
-			<figure class="polaroid" id="video_content">
+			<figure class="video_content">
 				 <div class=video>${block.embed.html}</div>
 			</figure>
 
@@ -127,7 +127,7 @@ let renderBlock = (block) => {
 		`
 		<li class="polaroid-grid">
 
-			<figure class="polaroid" id="pdf_content">
+			<figure class="oldpaper">
 				<img src=${block.image.large.url}></img>
 			</figure>
 
@@ -148,12 +148,13 @@ let renderBlock = (block) => {
 				`
 				<li class="polaroid-grid" >
 
-					<figure class="polaroid" id="audio_content">
-						<audio controls src="${ block.attachment.url }"></audio>
+					<figure class="audio_content">
+				
 					</figure>
 
 					<div class="polaroidtext">
 						<h3>${ block.title }</h3>
+						<audio controls src="${ block.attachment.url }"></audio>
 					</div>
 
 				</li>
@@ -177,15 +178,16 @@ let renderBlock = (block) => {
 				`
 				<li class="polaroid-grid">
 
-				<figure class="polaroid" id="video_content">
-			 		<div class=video>${block.embed.html}</div>
+				<figure class="video_content">
+					 <div class=video>${block.embed.html}</div>
 				</figure>
-
+	
 				<div class="polaroidtext">
 					<h3>${ block.title }</h3>
 				</div>
-
-			</li>
+	
+				</li>
+				
 				`
 			channelBlocks.insertAdjacentHTML('beforeend', linkedVideoItem)
 			// More on iframe: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
@@ -264,22 +266,8 @@ window.addEventListener('scroll', function() {
     });
 
 
-    let videos = document.querySelectorAll('#video_content');
-    videos.forEach((video) => {
-        let distanceFromTop = video.getBoundingClientRect().top;
-        let windowHeight = window.innerHeight;
-        let viewportMiddle = windowHeight / 2;
 
-        if (distanceFromTop < viewportMiddle && distanceFromTop > -windowHeight / 2) {
-            let moveRight = 3; 
-            video.style.transition = 'transform 2s ease'; 
-            video.style.transform = `translateX(${moveRight}rem)`;
-        } else {
-            video.style.transition = 'none'; 
-            video.style.transform = 'none';
-        }
     });
-});
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -313,26 +301,56 @@ window.addEventListener('scroll', function() {
 	let scrollPosition = window.scrollY;
 	let opacityValue = 0.3 - (scrollPosition / 1000); 
 	document.getElementById('ireland-map').style.opacity = opacityValue;
-	document.getElementById('ireland-map').style.filter = `blur(${scrollPosition / 30}px)`; // 滚动越多，模糊越多
+	document.getElementById('ireland-map').style.filter = `blur(${scrollPosition / 30}px)`; 
   });
 
 
   
-// 检测滚动事件
 window.addEventListener('scroll', function() {
     var textContents = document.querySelectorAll('.text_content');
-    
-    // 對於每個元素進行遍歷
     textContents.forEach(function(textContent) {
         var rect = textContent.getBoundingClientRect();
 
-        // 檢查元素是否在屏幕上半部
         if (rect.top < window.innerHeight / 6) {
-            // 添加模糊和淡出效果的類
             textContent.classList.add('blur');
         } else {
-            // 移除模糊和淡出效果的類
             textContent.classList.remove('blur');
+        }
+    });
+});
+
+
+function isInViewport(element) {
+    const rect = element.getBoundingClientRect();
+    const halfViewportHeight = window.innerHeight / 2;
+
+    return (
+        rect.top < halfViewportHeight && // 
+        rect.bottom > halfViewportHeight //
+    );
+}
+
+window.addEventListener('scroll', function() {
+    const oldpaperElements = document.querySelectorAll('.oldpaper');
+    
+    oldpaperElements.forEach(function(oldpaper) {
+        if (isInViewport(oldpaper)) {
+            oldpaper.classList.add('rotated');
+        }
+    });
+});
+
+
+window.addEventListener('scroll', function() {
+    const videos = document.querySelectorAll('.video');
+
+    videos.forEach(function(video) {
+        const rect = video.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        const viewportBottom = windowHeight / 2;
+
+        if (rect.top < viewportBottom) {
+            video.classList.add('fade-in'); // 添加类名到滑进屏幕的元素
         }
     });
 });

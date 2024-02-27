@@ -254,8 +254,8 @@ a, button {
     align-items: center;
     height: 43rem;
     width: 27rem;
-    margin-top: 5rem;
-    margin-bottom: 5rem;
+    margin-top: 7rem;
+    margin-bottom: 7rem;
     margin-left: 6vw;
     box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);
     border-radius: 3px;}
@@ -270,59 +270,64 @@ a, button {
 }
 /* polaroid video */
 
-#video_content{
-    height:50rem;
-    width:70rem;
-    align-items: center;
-    margin-left:-8rem;
-
-}
-
-
-
-.polaroid video {
-    width: 100%;
+.video_content {
+    padding: 2% 2% 2% 2%;
+    background-image: url('assets/noise5.gif'); 
+    align-content: top;
+    align-items: top;
     height: 100%;
+    max-width: 38rem;
+    margin-top: 7rem;
+    margin-bottom: 7rem;
+    margin-left: 6vw;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);
+    border-radius: 3px;}
+
+.video {
     object-fit: cover;
+    opacity: 0; 
+    transition: opacity 3s ease; 
+    position: relative;
 }
+
+.video.fade-in {
+    opacity: 1; 
+}
+    
 
 /* polaroid audio */
 
-#audio_content{
-    background-color: #e2e2e2;
-    rotate:3deg;
-    margin-left:20rem;}
-
-
-.polaroid audio {
-    aspect-ratio: 3.1 / 2.3;
-    width: 100%;
-    height: 100%;
-    background-image: url("assets/listen.jpg"); 
+.audio_content{
+    background-image: url("assets/audio_tap.gif"); 
+    height: 21rem;
+    width: 38rem;
+    margin-left:-6rem;
+    margin-top: 7rem;
+    margin-bottom: 7rem;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);
     background-size: cover; 
-    background-repeat: no-repeat; 
+    background-repeat: no-repeat;
+    border-radius: 30px;
+    rotate:10deg;}
+
+.polaroid-grid audio {
+    margin-top: 2vh;
 }
 
-/* polaroid pdf */
 
-#pdf_content{
-    background-color: #e9e9e9;
-    rotate:-3deg;
-    margin-left:8rem;
-    height:57vh;
-    width:57vh;}
+
 
 /* polaroid text */
 
 .text_content{
-    margin-top: 5rem;
-    margin-bottom: 8rem;
+    margin-top: 7rem;
+    margin-bottom: 7rem;
     margin-left: 6vw;
-    width: 40rem;
+    width: 50vw;
     height: 100%;
     font-family: var(--font-family3);
-    font-size: calc(var(--font-size) * 1.6);
-    line-height: calc(var(--font-size) * 2.4);
+    font-size: calc(var(--font-size) * 2);
+    line-height: calc(var(--font-size) * 3);
     color:var(--ireland-green);
     transition: opacity 0.8s, filter 0.8s;
 }
@@ -343,28 +348,36 @@ a, button {
     margin-bottom:2rem;
     word-break: break-all;}
 
-/* polaroid link */
+/* polaroid link *//* polaroid pdf */
 
 .oldpaper {
     padding: 0% 0% 0% 0%;;
     align-content: center;
     align-items: center;
-    height: 43rem;
-    width: 43rem;
-    margin-left: -4rem;
-    margin-top: 5rem;
-    margin-bottom: 5rem;
-    rotate: 0deg;
+    height: 50rem;
+    width: 40rem;
+    margin-left: -10rem;
+    margin-top: 10rem;
+    margin-bottom: 10rem;
     box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
     background-image: url("assets/oldpaper.png"); 
-}
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    transition: transform 1s ease; 
+    }
+    
+    .rotated {
+        transform: rotate(-7deg); 
+    }
+
 
 .oldpaper img {
     height: 100%;
+    width: 100%;
     opacity:50%; 
     aspect-ratio: 1 / 1;
     object-fit: cover;
     transition: none;
+    border-radius:255px 15px 225px 15px/15px 225px 15px 255px;
 }
 
 
@@ -572,13 +585,15 @@ h5{
 
 /* polaroid video */
 
-#video_content{
-    height:15.6rem;
+.video_content{
+    height:auto;
     width:21.6rem;
-    align-items: center;
-    margin-left:-10rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    margin-left: 0rem;
 
 }
+
 
 .polaroid video {
     width: 100%;
@@ -588,30 +603,25 @@ h5{
 
 /* polaroid audio */
 
-#audio_content{
-    background-color: #e2e2e2;
-    rotate:0deg;
-    margin-left:0rem;}
+
+.audio_content{ 
+    height: 10.8rem;
+    width: 21.6rem;
+    margin-left:0rem;
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+    border-radius: 20px;}
 
 
 
-/* polaroid pdf */
 
-#pdf_content{
-    background-color: #e9e9e9;
-    rotate:0deg;
-    margin-left:-50rem;
-    height:57vh;
-    width:57vh;}
-
-
-/* polaroid link */
+/* polaroid link */ /* polaroid pdf */
 
 .oldpaper {
-    height: 27rem;
+    height: 21.6rem;
     width: 21.6rem;
     margin-left: 0rem;
-    margin-top: 1rem;
+    margin-top: 2rem;
     margin-bottom: 2rem;
     }
 
@@ -732,10 +742,8 @@ h5{
 
 
 .polaroid {
-    height: 109%;
+    height: 100%;
     width: 100%;
-    margin-top: 2rem;
-    margin-bottom: 3rem;
     margin-left: 0rem;
     border-radius: 3px;}
 
@@ -766,15 +774,33 @@ h5{
     }    
 
 /* polaroid link */
-#link_content{
-    margin-left:4rem;
-    rotate:4deg;
-    height: 20rem; 
-    width: 16.5rem; 
+.oldpaper{
+    margin-left:0rem;
+    rotate:0deg;
+    height: 100%; 
+    width: 100%; 
+    
     }
 
 
 
+/* polaroid audio */
+.audio_content{ 
+    height: 10rem;
+    width: 100%;
+    margin-left:0rem;
+    border-radius: 10px;}
 
+
+
+/* polaroid viedeo */
+.video_content{
+    height:100%;
+    width:100%;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    margin-left: 0rem;
+
+}
     
 }
