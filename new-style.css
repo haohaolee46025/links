@@ -196,7 +196,7 @@ em{
         padding-left:4rem;
         padding-right:4rem;
         width:30vw;
-        margin-top: 7rem;
+        margin-top: 10rem;
     }
     
 
@@ -281,8 +281,8 @@ a, button {
     align-items: top;
     height: 100%;
     max-width: 38rem;
-    margin-top: 7rem;
-    margin-bottom: 7rem;
+    margin-top: 10rem;
+    margin-bottom: 10rem;
     margin-left: 6vw;
     box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);
     border-radius: 3px;}
@@ -298,6 +298,10 @@ a, button {
     opacity: 1; 
 }
     
+.video_content:hover {
+    scale:160%;
+    background-image: url('assets/noise4.gif'); 
+}
 
 /* polaroid audio */
 
@@ -306,7 +310,7 @@ a, button {
     height: 21rem;
     width: 38rem;
     margin-left:-6rem;
-    margin-top: 7rem;
+    margin-top: rem;
     margin-bottom: 7rem;
     box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);
     background-size: cover; 
@@ -326,11 +330,12 @@ a, button {
 
 
 
+
 /* polaroid text */
 
 .text_content{
-    margin-top: 7rem;
-    margin-bottom: 7rem;
+    margin-top: 10rem;
+    margin-bottom: 10rem;
     margin-left: 6vw;
     width: 50vw;
     height: 100%;
@@ -374,10 +379,9 @@ a, button {
     transition: transform 1s ease; 
     }
     
-    .rotated {
-        transform: rotate(-7deg); 
+.rotated {
+        transform: rotate(-20deg); 
     }
-
 
 .oldpaper img {
     height: 100%;
