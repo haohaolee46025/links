@@ -350,7 +350,10 @@ window.addEventListener('scroll', function() {
         const viewportBottom = windowHeight / 2;
 
         if (rect.top < viewportBottom) {
-            video.classList.add('fade-in'); // 添加类名到滑进屏幕的元素
+            video.classList.add('fade-in'); // 
         }
     });
 });
+
+
+
