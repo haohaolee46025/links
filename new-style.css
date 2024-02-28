@@ -114,7 +114,8 @@ button{
 }
 
 button:hover {
-    background-color: var(--ireland-green);}
+    background-color: var(--ireland-green);
+    scale:110%;}
 
 
 
@@ -606,6 +607,10 @@ h5{
 
 }
 
+.video_content:hover {
+    scale:none;
+    background-image: url('assets/noise5.gif'); 
+}
 
 .polaroid video {
     width: 100%;
