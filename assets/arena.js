@@ -250,9 +250,7 @@ fetch(`https://api.are.na/v2/channels/${channelSlug}?per=100`, { cache: 'no-stor
 	})
 
 // animation
-
 window.addEventListener('scroll', function() {
-
     let images = document.querySelectorAll('.polaroid img');
     images.forEach((image) => {
         let distanceFromTop = image.getBoundingClientRect().top;
@@ -265,13 +263,52 @@ window.addEventListener('scroll', function() {
         }
     });
 
-
-
+    let linkTexts = document.querySelectorAll('.linktext');
+    linkTexts.forEach((linkText) => {
+        let distanceFromTop = linkText.getBoundingClientRect().top;
+        let windowHeight = window.innerHeight;
+        let viewportBottom = windowHeight / 2;
+        if (distanceFromTop < viewportBottom) {
+            linkText.style.opacity = 1;
+        }
     });
 
+    let scrollPosition = window.scrollY;
+    let opacityValue = 0.3 - (scrollPosition / 1000);
+    let irelandMap = document.getElementById('ireland-map');
+    irelandMap.style.opacity = opacityValue;
+    irelandMap.style.filter = `blur(${scrollPosition / 30}px)`;
 
+    let textContents = document.querySelectorAll('.text_content');
+    textContents.forEach(function(textContent) {
+        let rect = textContent.getBoundingClientRect();
+        if (rect.top < window.innerHeight / 6) {
+            textContent.classList.add('blur');
+        } else {
+            textContent.classList.remove('blur');
+        }
+    });
+
+    const oldpaperElements = document.querySelectorAll('.oldpaper');
+    oldpaperElements.forEach(function(oldpaper) {
+        if (isInViewport(oldpaper)) {
+            oldpaper.classList.add('rotated');
+        }
+    });
+
+    const videos = document.querySelectorAll('.video');
+    videos.forEach(function(video) {
+        const rect = video.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        const viewportBottom = windowHeight / 2;
+        if (rect.top < viewportBottom) {
+            video.classList.add('fade-in');
+        }
+    });
+});
+
+// Top button
 document.addEventListener('DOMContentLoaded', function() {
-
     let button = document.querySelector('button');
     button.addEventListener('click', function() {
         window.scrollTo({
@@ -281,79 +318,13 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-window.addEventListener('scroll', function() {
-    let linkTexts = document.querySelectorAll('.linktext');
-    linkTexts.forEach((linkText) => {
-        let distanceFromTop = linkText.getBoundingClientRect().top;
-        let windowHeight = window.innerHeight;
-        let viewportBottom = windowHeight / 2; 
-        if (distanceFromTop < viewportBottom) {
-            linkText.style.opacity = 1; 
-        }
-    });
-
-    
-    window.removeEventListener('scroll', this);
-});
-
-
-window.addEventListener('scroll', function() {
-	let scrollPosition = window.scrollY;
-	let opacityValue = 0.3 - (scrollPosition / 1000); 
-	document.getElementById('ireland-map').style.opacity = opacityValue;
-	document.getElementById('ireland-map').style.filter = `blur(${scrollPosition / 30}px)`; 
-  });
-
-
-  
-window.addEventListener('scroll', function() {
-    var textContents = document.querySelectorAll('.text_content');
-    textContents.forEach(function(textContent) {
-        var rect = textContent.getBoundingClientRect();
-
-        if (rect.top < window.innerHeight / 6) {
-            textContent.classList.add('blur');
-        } else {
-            textContent.classList.remove('blur');
-        }
-    });
-});
-
-
+// 確認元素是否在視窗中
 function isInViewport(element) {
     const rect = element.getBoundingClientRect();
     const halfViewportHeight = window.innerHeight / 2;
 
     return (
-        rect.top < halfViewportHeight && // 
-        rect.bottom > halfViewportHeight //
+        rect.top < halfViewportHeight &&
+        rect.bottom > halfViewportHeight
     );
 }
-
-window.addEventListener('scroll', function() {
-    const oldpaperElements = document.querySelectorAll('.oldpaper');
-    
-    oldpaperElements.forEach(function(oldpaper) {
-        if (isInViewport(oldpaper)) {
-            oldpaper.classList.add('rotated');
-        }
-    });
-});
-
-
-window.addEventListener('scroll', function() {
-    const videos = document.querySelectorAll('.video');
-
-    videos.forEach(function(video) {
-        const rect = video.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
-        const viewportBottom = windowHeight / 2;
-
-        if (rect.top < viewportBottom) {
-            video.classList.add('fade-in'); // 
-        }
-    });
-});
-
-
-

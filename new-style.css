@@ -189,6 +189,7 @@ em{
     flex-direction: row;
     grid-template-columns: 2fr 1fr;
     align-items: top;
+    gap:3vw;
 }
 
 
